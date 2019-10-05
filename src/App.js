@@ -1,3 +1,5 @@
+// this is the root component
+
 import React, { Component } from 'react';
 import Tasks from './Tasks';
 import AddTask from './AddTask';
@@ -5,12 +7,12 @@ import AddTask from './AddTask';
 class App extends Component {
   state = {
     tasks: [
-        { content: 'First task!', id: 1, done: false }
+        { content: 'play game', id: 1 },
+        { content: 'make dinner', id: 2 }
     ]
   }
   addTask = (task) => {
     task.id = Math.random();
-    task.done = false;
     let tasks = [...this.state.tasks, task];
     this.setState({
         tasks: tasks
@@ -26,8 +28,8 @@ class App extends Component {
   }
   render() {
       return (
-          <div className="App">
-            <h1>ToDo React App</h1>
+          <div className="todo-app container">
+            <h2 className="center teal-text">Todo React App</h2>
             <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
             <AddTask addTask={this.addTask} />
           </div>
